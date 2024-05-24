@@ -1,3 +1,4 @@
 rootProject.name = 'sevice'
 include 'api'
+include 'db'
 
