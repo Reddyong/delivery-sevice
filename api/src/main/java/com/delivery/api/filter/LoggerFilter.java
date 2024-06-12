@@ -23,6 +23,8 @@ public class LoggerFilter implements Filter {
         var req = new ContentCachingRequestWrapper((HttpServletRequest) request);
         var res = new ContentCachingResponseWrapper((HttpServletResponse) response);
 
+        log.info("INIT URI : {}", req.getRequestURI());
+
         // 아래의 doFilter 를 기준으로 실행 전/후가 나뉘게 된다.(윗쪽 코드가 실행 전, 아랫쪽 코드가 실행 후)
         chain.doFilter(req, res);
 
