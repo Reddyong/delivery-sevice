@@ -2,6 +2,7 @@ package com.delivery.api.domain.user.controller;
 
 import com.delivery.api.common.api.Api;
 import com.delivery.api.domain.user.business.UserBusiness;
+import com.delivery.api.domain.user.controller.model.UserLoginRequest;
 import com.delivery.api.domain.user.controller.model.UserRegisterRequest;
 import com.delivery.api.domain.user.controller.model.UserResponse;
 import jakarta.validation.Valid;
@@ -28,6 +29,16 @@ public class UserOpenApiController {
             @RequestBody Api<UserRegisterRequest> request
     ) {
         var response = userBusiness.register(request.getBody());
+
+        return Api.OK(response);
+    }
+
+    @PostMapping(path = "/login")
+    public Api<UserResponse> login(
+            @Valid
+            @RequestBody Api<UserLoginRequest> request
+    ) {
+        var response = userBusiness.login(request.getBody());
 
         return Api.OK(response);
     }
